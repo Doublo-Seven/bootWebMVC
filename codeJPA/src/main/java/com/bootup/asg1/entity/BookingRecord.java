@@ -2,11 +2,15 @@ package com.bootup.asg1.entity;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
 
 @Entity
 public class BookingRecord {
@@ -23,6 +27,20 @@ public class BookingRecord {
 	private String origin;
 	private String status;
 	
+	@OneToMany
+	@JoinTable(name = "BookingDetails",
+	joinColumns = {@JoinColumn(name="bookingId", referencedColumnName = "bookingId")},
+	inverseJoinColumns = {@JoinColumn(name = "passengerId", referencedColumnName = "passengerId")})
+	private List<Passenger> passengerList;
+	
+	public List<Passenger> getPassengerList() {
+		return passengerList;
+	}
+
+	public void setPassengerList(List<Passenger> passengerList) {
+		this.passengerList = passengerList;
+	}
+
 	public BookingRecord() {
 		super();
 		// TODO Auto-generated constructor stub

@@ -1,9 +1,15 @@
 package com.bootup.asg1.entity;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 @Entity
 public class AirlineInfo {
@@ -13,6 +19,20 @@ public class AirlineInfo {
 	private String airlineLogo;
 	private String nameOfAirline;
 	
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "FlightsInfo",
+			joinColumns = {@JoinColumn(name = "airlineId", referencedColumnName = "airlineId")},
+			inverseJoinColumns = {@JoinColumn(name="flightId", referencedColumnName="flightId")})
+	private List<FlightInfo> flightInfoList;
+	
+	public List<FlightInfo> getFlightInfoList() {
+		return flightInfoList;
+	}
+
+	public void setFlightInfoList(List<FlightInfo> flightInfoList) {
+		this.flightInfoList = flightInfoList;
+	}
+
 	public AirlineInfo() {
 		super();
 		// TODO Auto-generated constructor stub

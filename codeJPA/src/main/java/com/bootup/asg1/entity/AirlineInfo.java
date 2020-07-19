@@ -22,7 +22,7 @@ public class AirlineInfo {
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "FlightsInfo",
 			joinColumns = {@JoinColumn(name = "airlineId", referencedColumnName = "airlineId")},
-			inverseJoinColumns = {@JoinColumn(name="flightId", referencedColumnName="flightId")})
+			inverseJoinColumns = {@JoinColumn(name="flightInfoid", referencedColumnName="flightInfoId")})
 	private List<FlightInfo> flightInfoList;
 	
 	public List<FlightInfo> getFlightInfoList() {

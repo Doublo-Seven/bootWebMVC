@@ -2,8 +2,10 @@ package com.bootup.asg1.entity;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,11 +25,11 @@ public class BookingRecord {
 	private int fare;
 	private LocalDate flightDate;
 	private String flightNumber;
-	private LocalDateTime flightTime;
+	private LocalTime flightTime;
 	private String origin;
 	private String status;
 	
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "BookingDetails",
 	joinColumns = {@JoinColumn(name="bookingId", referencedColumnName = "bookingId")},
 	inverseJoinColumns = {@JoinColumn(name = "passengerId", referencedColumnName = "passengerId")})
@@ -47,7 +49,7 @@ public class BookingRecord {
 	}
 
 	public BookingRecord(LocalDateTime bookingDate, String destination, int fare, LocalDate flightDate,
-			String flightNumber, LocalDateTime flightTime, String origin, String status) {
+			String flightNumber, LocalTime flightTime, String origin, String status) {
 		super();
 		this.bookingDate = bookingDate;
 		this.destination = destination;
@@ -99,11 +101,11 @@ public class BookingRecord {
 		this.flightNumber = flightNumber;
 	}
 
-	public LocalDateTime getFlightTime() {
+	public LocalTime getFlightTime() {
 		return flightTime;
 	}
 
-	public void setFlightTime(LocalDateTime flightTime) {
+	public void setFlightTime(LocalTime flightTime) {
 		this.flightTime = flightTime;
 	}
 

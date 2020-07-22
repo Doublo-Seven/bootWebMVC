@@ -1,6 +1,7 @@
 package com.bootup.asg1.entity;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -18,12 +19,10 @@ public class Flight {
 	private String destination;
 	private String duration;
 	private LocalDate flightDate;
-	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name  = "flightNumber")
-	private FlightInfo flightNumber;
+	private String flightNumber;
 	
 	private String origin;
+	private LocalTime flightTime;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "fareId")
@@ -41,7 +40,7 @@ public class Flight {
 		super();
 	}
 
-	public Flight(String destination, String duration, LocalDate flightDate, FlightInfo flightNumber, String origin,
+	public Flight(String destination, String duration, LocalDate flightDate, String flightNumber, String origin, LocalTime flightTime,
 			Fare fareId, FlightInfo fightInfoid, Inventory invId) {
 		super();
 		this.destination = destination;
@@ -49,9 +48,18 @@ public class Flight {
 		this.flightDate = flightDate;
 		this.flightNumber = flightNumber;
 		this.origin = origin;
+		this.flightTime = flightTime;
 		this.fareId = fareId;
 		this.fightInfoid = fightInfoid;
 		this.invId = invId;
+	}
+
+	public LocalTime getFlightTime() {
+		return flightTime;
+	}
+
+	public void setFlightTime(LocalTime flightTime) {
+		this.flightTime = flightTime;
 	}
 
 	public String getDestination() {
@@ -78,11 +86,11 @@ public class Flight {
 		this.flightDate = flightDate;
 	}
 
-	public FlightInfo getFlightNumber() {
+	public String getFlightNumber() {
 		return flightNumber;
 	}
 
-	public void setFlightNumber(FlightInfo flightNumber) {
+	public void setFlightNumber(String flightNumber) {
 		this.flightNumber = flightNumber;
 	}
 

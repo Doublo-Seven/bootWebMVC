@@ -1,6 +1,5 @@
 package com.bootup.asg1.entity;
 
-import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -8,7 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Passenger {
@@ -21,9 +20,9 @@ public class Passenger {
 	private String lastName;
 	private int mobileNumber;
 	
-	@OneToMany(targetEntity = BookingRecord.class, cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "bookingId")
-	private List<BookingRecord> bookingId;
+	private BookingRecord bookingId;
 	
 	public Passenger() {
 		super();
@@ -31,7 +30,7 @@ public class Passenger {
 	}
 
 	public Passenger(int passengerId, String emailAddress, String firstName, String gender, String lastName,
-			int mobileNumber, List<BookingRecord> bookingId) {
+			int mobileNumber, BookingRecord bookingId) {
 		super();
 		this.passengerId = passengerId;
 		this.emailAddress = emailAddress;
@@ -82,11 +81,11 @@ public class Passenger {
 		this.mobileNumber = mobileNumber;
 	}
 
-	public List<BookingRecord> getBookingId() {
+	public BookingRecord getBookingId() {
 		return bookingId;
 	}
 
-	public void setBookingId(List<BookingRecord> bookingId) {
+	public void setBookingId(BookingRecord bookingId) {
 		this.bookingId = bookingId;
 	}
 	

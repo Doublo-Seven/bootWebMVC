@@ -1,10 +1,12 @@
 package com.bootup.asg1.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.bootup.asg1.dao.AirlineInfoDao;
 import com.bootup.asg1.entity.AirlineInfo;
 
+@Service
 public class AirlineInfoServiceImpl implements AirlineInfoService {
 	
 	@Autowired

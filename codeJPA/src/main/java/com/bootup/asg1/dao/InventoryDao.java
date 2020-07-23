@@ -5,5 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.bootup.asg1.entity.Inventory;
 
 public interface InventoryDao extends JpaRepository<Inventory, Integer>{
+	
+	Inventory findByInvId(int invId);
 
 }

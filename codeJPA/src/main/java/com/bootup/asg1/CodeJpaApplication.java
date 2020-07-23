@@ -7,6 +7,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
+import com.bootup.asg1.service.AirlineInfoService;
 import com.bootup.asg1.service.FlightService;
 
 @SpringBootApplication
@@ -15,6 +16,7 @@ public class CodeJpaApplication {
 	public static void main(String[] args) {
 		ApplicationContext ac = SpringApplication.run(CodeJpaApplication.class, args);
 		FlightService fs = ac.getBean(FlightService.class);
+		AirlineInfoService als = ac.getBean(AirlineInfoService.class);
 		
 		
 		System.out.println("\n1. All Indigo flights on 21st August, 2020 ");

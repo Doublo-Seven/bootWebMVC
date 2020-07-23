@@ -1,19 +1,23 @@
 package com.bootup.asg1.service;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
+//import javax.persistence.TypedQuery;
+//import javax.persistence.criteria.CriteriaBuilder;
+//import javax.persistence.criteria.CriteriaQuery;
+//import javax.persistence.criteria.Join;
+//import javax.persistence.criteria.Predicate;
+//import javax.persistence.criteria.Root;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bootup.asg1.dao.FlightDao;
-import com.bootup.asg1.entity.Fare;
+//import com.bootup.asg1.entity.Fare;
 import com.bootup.asg1.entity.Flight;
 
 @Service
@@ -38,15 +42,34 @@ public class FlightServiceImpl implements FlightService {
 	@Override
 	public List<Flight> findByOriginAndDestinationAndFlightDate(String origin, String destination,
 			LocalDate flightDate) {
-		CriteriaBuilder cb = em.getCriteriaBuilder();
-		CriteriaQuery<Flight> cq = cb.createQuery(Flight.class);
+//		CriteriaBuilder cb = em.getCriteriaBuilder();
+//		CriteriaQuery<Flight> cq = cb.createQuery(Flight.class);
+//		
+//		Root<Flight> flight = cq.from(Flight.class);
+//		Join<Flight, Fare> fare = flight.join("fareId");
+//		Predicate p1 = cb.equal(flight.get("origin"),origin);
+//		Predicate p2 = cb.equal(flight.get("destination"), destination);
+//		Predicate p3 = cb.equal(flight.get("flightDate"), flightDate);
+//		cq.orderBy(cb.asc(flight.get("fare"))).where(flight.get("origin"));
 		
-		Root<Flight> flight = cq.from(Flight.class);
-		Root<Fare> fare = cq.from(Fare.class);
-		cq.multiselect(flight,fare);
-		cq.where(cb.equal(flight.get("fare"), fare.get("fareId")));
 		
-		return null;
+		return flightDao.findByOriginAndDestinationAndFlightDate(origin, destination, flightDate);
+	}
+
+	@Override
+	public List<Flight> findByFlightNumberAndOriginAndDestination(String flightNumber, String origin, String destination) {
+		return flightDao.findByFlightNumberAndOriginAndDestination(flightNumber, origin, destination);
+	}
+
+	@Override
+	public List<Flight> findByFlightNumberAndFlightDateAndFlightTime(String flightNumber, LocalDate flightDate,
+			LocalTime flightTime) {
+		return flightDao.findByFlightNumberAndFlightDateAndFlightTime(flightNumber, flightDate, flightTime);
+	}
+
+	@Override
+	public void saveAll(List<Flight> flights) {
+		System.out.println("\n flight added");
 	}
 
 }

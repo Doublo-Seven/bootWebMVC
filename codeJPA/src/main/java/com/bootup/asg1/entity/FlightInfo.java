@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 public class FlightInfo {
@@ -13,6 +15,10 @@ public class FlightInfo {
 	private String flightNumber;
 	private String flightType;
 	private int numberofSeats;
+	
+	@OneToOne
+	@JoinColumn(name = "airlineId")
+	private AirlineInfo airlineInfo;
 	
 	public FlightInfo() {
 		super();

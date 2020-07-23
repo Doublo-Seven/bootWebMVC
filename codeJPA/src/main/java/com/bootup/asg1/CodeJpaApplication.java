@@ -72,6 +72,8 @@ public class CodeJpaApplication {
 			System.out.println("-------------------------");		   
 		});
 		
+		System.out.println("\n6. add additional flight from pune to chennai");
+		
 		}
 		
 	}

@@ -42,7 +42,7 @@ public class FlightServiceImpl implements FlightService {
 	@Override
 	public List<Flight> findByOriginAndDestinationAndFlightDate(String origin, String destination,
 			LocalDate flightDate) {
-//		CriteriaBuilder cb = em.getCriteriaBuilder();
+//	11	CriteriaBuilder cb = em.getCriteriaBuilder();
 //		CriteriaQuery<Flight> cq = cb.createQuery(Flight.class);
 //		
 //		Root<Flight> flight = cq.from(Flight.class);

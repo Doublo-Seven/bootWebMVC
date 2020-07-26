@@ -6,4 +6,7 @@ import com.bootup.asg1.entity.FlightInfo;
 
 public interface FightInfoDao extends JpaRepository<FlightInfo, Integer> {
 
+	FlightInfo findByFlightNumber(String flightNumber);
+	
+	FlightInfo findByFlightInfoid(int id);
 }

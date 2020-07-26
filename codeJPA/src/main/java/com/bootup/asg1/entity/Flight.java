@@ -24,15 +24,15 @@ public class Flight {
 	private String origin;
 	private LocalTime flightTime;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "fareId")
 	private Fare fareId;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "flightInfoid")
 	private FlightInfo fightInfoid;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "invId")
 	private Inventory invId;
 	
@@ -125,6 +125,9 @@ public class Flight {
 	public void setInvId(Inventory invId) {
 		this.invId = invId;
 	}
-	
+
+	public int getId() {
+		return id;
+	}	
 	
 }

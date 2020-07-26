@@ -1,9 +1,14 @@
 package com.bootup.asg1.entity;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Inventory {
@@ -12,6 +17,18 @@ public class Inventory {
 	private int invId;
 	private int count;
 	
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "flightInfoid")
+	private List<Flight> flightList;
+	
+
+	public List<Flight> getFlightList() {
+		return flightList;
+	}
+
+	public void setFlightList(List<Flight> flightList) {
+		this.flightList = flightList;
+	}
 
 	public Inventory() {
 		super();
@@ -28,6 +45,10 @@ public class Inventory {
 	}
 	public void setCount(int count) {
 		this.count = count;
+	}
+
+	public int getInvId() {
+		return invId;
 	}
 	
 }

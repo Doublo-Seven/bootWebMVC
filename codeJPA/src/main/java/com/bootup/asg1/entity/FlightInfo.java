@@ -1,5 +1,6 @@
 package com.bootup.asg1.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,9 +17,21 @@ public class FlightInfo {
 	private String flightType;
 	private int numberofSeats;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "airlineId")
 	private AirlineInfo airlineInfo;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "flightInfoid")
+	private Flight flight;
+
+	public Flight getFlight() {
+		return flight;
+	}
+
+	public void setFlight(Flight flight) {
+		this.flight = flight;
+	}
 
 	public String getFlightNumber() {
 		return flightNumber;

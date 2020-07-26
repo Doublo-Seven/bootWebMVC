@@ -8,7 +8,7 @@ import com.bootup.asg1.entity.Flight;
 
 public interface FlightService {
 	
-	void saveAll(List<Flight> flights);
+	Flight save(Flight flight);
 	
 	List<Flight> findAllByFlightNumberAndFlightDate(String flightNumber,LocalDate flightDate);
 	

@@ -68,8 +68,10 @@ public class FlightServiceImpl implements FlightService {
 	}
 
 	@Override
-	public void saveAll(List<Flight> flights) {
-		System.out.println("\n flight added");
+	public Flight save(Flight flight) {
+		// TODO Auto-generated method stub
+		return flightDao.save(flight);
 	}
+
 
 }

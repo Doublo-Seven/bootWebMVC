@@ -14,15 +14,13 @@
 
 
 	<div align="center">
-		<form:form>
-			<form:input path="userName" />
-			<br />
-			<form:password path="password"/>
-			<br />
-			<input type="submit" value="Login">
-		</form:form>
-	<a href = "/register">I want to sign up for booking flight</a>
-	<a href = "/searchFlights">I just want to search flights</a>
+		<form action="checkCred" method="post">
+			UserName: <input type="text" name="userName"><br><br>
+			Passsword: <input type="password" name="password"><br><br>
+			<input type="submit" value= Login>
+		</form><br>
+	<a href = "/register">I want to sign up for booking flight</a><br><br>
+	<a href = "/searchFlight">I just want to search flights</a>
 	</div>
 </body>
 </html>

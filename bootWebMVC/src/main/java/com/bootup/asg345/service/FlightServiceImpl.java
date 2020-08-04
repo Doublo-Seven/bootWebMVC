@@ -73,5 +73,18 @@ public class FlightServiceImpl implements FlightService {
 		return flightDao.save(flight);
 	}
 
+	@Override
+	public List<Flight> findAllByFlightDateAndOriginAndDestination(LocalDate flightDate, String origin,
+			String destination) {
+		// TODO Auto-generated method stub
+		return flightDao.findAllByFlightDateAndOriginAndDestination(flightDate, origin, destination);
+	}
+
+	@Override
+	public List<Flight> findAll() {
+		// TODO Auto-generated method stub
+		return flightDao.findAll();
+	}
+
 
 }

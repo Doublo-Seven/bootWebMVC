@@ -19,4 +19,8 @@ public interface FlightService {
 	List<Flight> findByFlightNumberAndOriginAndDestination(String flightNumber, String origin, String destination);
 	
 	List<Flight> findByFlightNumberAndFlightDateAndFlightTime(String flightNumber, LocalDate flightDate, LocalTime flightTime);
+	
+	List<Flight> findAllByFlightDateAndOriginAndDestination(LocalDate flightDate, String origin, String destination);
+
+	List<Flight> findAll();
 }

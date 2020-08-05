@@ -16,7 +16,7 @@
 	<div align="center">
 		<form action="checkCred" method="post">
 			UserName: <input type="text" name="userName"><br><br>
-			Passsword: <input type="password" name="password"><br><br>
+			Password: <input type="password" name="password"><br><br>
 			<input type="submit" value= Login>
 		</form><br>
 	<a href = "/register">I want to sign up for booking flight</a><br><br>

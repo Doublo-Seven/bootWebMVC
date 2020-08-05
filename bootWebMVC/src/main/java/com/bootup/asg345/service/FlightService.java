@@ -20,7 +20,7 @@ public interface FlightService {
 	
 	List<Flight> findByFlightNumberAndFlightDateAndFlightTime(String flightNumber, LocalDate flightDate, LocalTime flightTime);
 	
-	List<Flight> findAllByFlightDateAndOriginAndDestination(LocalDate flightDate, String origin, String destination);
+	List<Flight> findByFlightDateAndOriginAndDestination(LocalDate flightDate, String origin, String destination);
 
 	List<Flight> findAll();
 }

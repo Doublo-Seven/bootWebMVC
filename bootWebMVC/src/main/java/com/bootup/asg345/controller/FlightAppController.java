@@ -1,10 +1,17 @@
 package com.bootup.asg345.controller;
 
+import java.time.LocalDate;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.bootup.asg345.entity.Flight;
 import com.bootup.asg345.entity.UserDetails;
@@ -21,6 +28,7 @@ public class FlightAppController {
 	FlightService fs;
 	
 	@RequestMapping(value = "/")
+	
 	public String welcome() {
 		return "login";
 	}
@@ -48,28 +56,22 @@ public class FlightAppController {
 	}
 	
 	@RequestMapping(value = "/searchFlight")
-	public String searchFlight(Model model, @ModelAttribute("flight")	Flight flight) {
-		fs.findAll().forEach(flights->{
-			System.out.println(flight.getFlightNumber() + " | " +
-			   flights.getOrigin() + " | "+ 
-			   flights.getDestination() + " | " + 
-			   flights.getFlightDate() + " | " + 
-			   flights.getFlightTime());
-	System.out.println("-------------------------");
-	});
+	
+	public String searchFlight(Model model) {
+		List<Flight> flights= fs.findAll();
+		model.addAttribute("flights", flights);
 		return "searchFlight";
 	}
 	
 	@RequestMapping(value = "/searchSpecific")
-	public String searchSpecific(@ModelAttribute("flight") Flight flight) {
-		fs.findAllByFlightDateAndOriginAndDestination(flight.getFlightDate(), flight.getOrigin(), flight.getDestination()).forEach(flights->{
-			System.out.println(flight.getFlightNumber() + " | " +
-					   flights.getOrigin() + " | "+ 
-					   flights.getDestination() + " | " + 
-					   flights.getFlightDate() + " | " + 
-					   flights.getFlightTime());
-			System.out.println("-------------------------");	
-		});
+	public String searchSpecific(Model model, @ModelAttribute("flight") Flight flight) {
+		List<Flight> flights1= fs.findByFlightDateAndOriginAndDestination(LocalDate.of(2020, 8, 21), flight.getOrigin(), flight.getDestination());
+		model.addAttribute("flights1",flights1);
 		return "searchSpecific";
+	}
+	
+	@RequestMapping(value = "/book")
+	public String book() {
+		return "bookingScreen";
 	}
 }

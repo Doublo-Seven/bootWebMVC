@@ -74,10 +74,10 @@ public class FlightServiceImpl implements FlightService {
 	}
 
 	@Override
-	public List<Flight> findAllByFlightDateAndOriginAndDestination(LocalDate flightDate, String origin,
+	public List<Flight> findByFlightDateAndOriginAndDestination(LocalDate flightDate, String origin,
 			String destination) {
 		// TODO Auto-generated method stub
-		return flightDao.findAllByFlightDateAndOriginAndDestination(flightDate, origin, destination);
+		return flightDao.findByFlightDateAndOriginAndDestination(flightDate, origin, destination);
 	}
 
 	@Override
